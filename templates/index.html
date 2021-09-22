@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Company Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  .jumbotron {
+    background-color: #04011e;
+    color: #fff;
+    padding: 20px 25px;
+  }
+  .container-fluid {
+    padding: 20px 100px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo {
+    font-size: 200px;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      background-color: #000000;
+      border-radius: 0px;
+      border-color: #04011e;
+      margin-top: -40px;
+    }
+  </style>
+  <script>
+    var v;
+    function changeImage(i){
+      const imgs = ["http://3.bp.blogspot.com/-LVOfjc9MGWI/T4rpW7JqwZI/AAAAAAAACEA/pxtSGDPQn70/s1600/titanic.png","https://static3.thetravelimages.com/wordpress/wp-content/uploads/2018/11/Titanic-Bottom-Of-Sea.jpg?q=50&fit=crop&w=740&h=416&dpr=1.5","https://laughingsquid.com/wp-content/uploads/2016/04/Titanic-Sinking-in-Real-Time.png","data:image/jpeg;base64,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","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVFXFt2J2SDNPXKHtcSdx3uuQpU97wchvig&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQPvdktO3fbv6-irqwr6MsQVI6YbKSuABT9A&usqp=CAU"]
+      document.getElementById('TitanicImages').setAttribute("src", imgs[i]);
+      v = (i+1)%imgs.length;
+      setTimeout("changeImage(v)",5000);
+    }
+  </script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Titanic Tragedy</h1>
+  <p>The Journey Never Ended!</p>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div>
+    <div>
+      <ul class="nav navbar-nav" style="margin:0 20% 0 28%">
+        <li class="active"><a href="/"><strong>Home</strong></a></li>
+        <li><a href="/UploadFile"><strong>Upload Data</strong></a></li>
+        <li><a href="/ViewData"><strong>View Data</strong></a></li>
+        <li><a href="/SplitData"><strong>Split Data</strong></a></li>
+        <li><a href="/TrainModel"><strong>Train Model</strong></a></li>
+        <li><a href="/Prediction"><strong>Prediction</strong></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <img id="TitanicImages" style="margin-left:-20%;margin-right:10%" src="https://static3.thetravelimages.com/wordpress/wp-content/uploads/2018/11/Titanic-Bottom-Of-Sea.jpg?q=50&fit=crop&w=740&h=416&dpr=1.5" width="300px" height="340px"/>
+      <br>
+    </div>
+    <script>changeImage(0);</script>
+
+    <div class="col-sm-9" style="margin-left:300px;margin-top:-360px;margin-bottom:-20px">
+      <h4 style="margin-bottom:-10px">Introduction</h4>
+      <hr>
+      <p>The RMS Titanic, a luxury steamship, sank in the early hours of April 15, 1912, off the coast of Newfoundland in the North Atlantic after sideswiping an iceberg during its maiden voyage. Of the 2,240 passengers and crew on board, more than 1,500 lost their lives in the disaster. Titanic has inspired countless books, articles and films (including the 1997 “Titanic” movie starring Kate Winslet and Leonardo DiCaprio), and the ships story has entered the public consciousness as a cautionary tale about the perils of human hubris.</p>
+      <p>The Titanic was the product of intense competition among rival shipping lines in the first half of the 20th century. In particular, the White Star Line found itself in a battle for steamship primacy with Cunard, a venerable British firm with two standout ships that ranked among the most sophisticated and luxurious of their time.</p>
+      <p>According to some hypotheses, Titanic was doomed from the start by a design that many lauded as state-of-the-art. The Olympic-class ships featured a double bottom and 15 watertight bulkhead compartments equipped with electric watertight doors that could be operated individually or simultaneously by a switch on the bridge.</p>
+      <p>It was these watertight bulkheads that inspired Shipbuilder magazine, in a special issue devoted to the Olympic liners, to deem them “practically unsinkable.”</p>
+      <br><br>
+
+</body>
+</html>

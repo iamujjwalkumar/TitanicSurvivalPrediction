@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Company Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  .jumbotron {
+    background-color: #04011e;
+    color: #fff;
+    padding: 20px 25px;
+  }
+  .container-fluid {
+    padding: 20px 100px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo {
+    font-size: 200px;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      background-color: #000000;
+      border-radius: 0px;
+      border-color: #04011e;
+      margin-top: -40px;
+    }
+  </style>
+  <script>
+    async function uploadFile() {
+    alert('File is Uploading');
+    let formData = new FormData();
+    formData.append("file", fileName.files[0]);
+    await fetch('/upload.php', {
+      method: "POST",
+      body: formData
+    });
+    alert('The file has been uploaded successfully.');
+  }
+  </script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Titanic Tragedy</h1>
+  <p>The Journey Never Ended!</p>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div>
+    <div>
+      <ul class="nav navbar-nav" style="margin:0 20% 0 28%">
+        <li><a href="/"><strong>Home</strong></a></li>
+        <li class="active"><a href="/UploadFile"><strong>Upload Data</strong></a></li>
+        <li><a href="/ViewData"><strong>View Data</strong></a></li>
+        <li><a href="/SplitData"><strong>Split Data</strong></a></li>
+        <li><a href="/TrainModel"><strong>Train Model</strong></a></li>
+        <li><a href="/Prediction"><strong>Prediction</strong></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<br/><br/><br/><br/>
+<div align="center">
+  <h2><b>Upload The Data Set</b></h2><br/>
+  <form action="/fetchdata" class="navbar-form" method="post" enctype="multipart/form-data">
+  <div class="form-group input-group">
+    <input type="file" class="form-control" name="fileName">
+      <span class="input-group-btn">
+        <button class="btn btn-default" name="fileName" type="submit">
+          <span class="glyphicon glyphicon-upload"></span>
+        </button>
+      </span>
+  </div>
+  </form>
+
+  {% if UPLOADED==True %}
+  <div class="alert alert-success" style="margin:20px 40% 0 40%">
+    <strong>Uploaded Successfully!</strong>
+  </div>
+
+    <br/><br/><br/>
+    <div>
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            {% for i in data.columns: %}
+              <th scope="col">{{i}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+      <tbody>
+        <tr>
+          {% for j in data.notnull().sum(): %}
+            <td scope="col">{{j}}</td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div align="center">
+    <h2><b></b></h2><br/>
+    <form action="/removeAttributes" class="navbar-form" method="post">
+        <h3>Attributes that may not affect output:</h3>
+      <div class="form-group input-group">
+        <input type="text" class="form-control" name="Attributes" size="50px">
+        <span class="input-group-btn">
+          <button class="btn btn-default" name="Attributes" type="submit">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+         </span>
+      </div>
+    </form>
+  </div>
+    <br/><br/>
+
+    {% elif UPLOADED==False %}
+    <div class="alert alert-danger" style="margin:20px 40% 0 40%">
+      <strong>Uploading Failed!</strong>
+    </div>
+  {% endif %}
+  </form>
+
+
+  {% if showAlert==True %}
+    <script>alert('Please Upload DataSet First');</script>
+  {% endif %}
+
+</div>
+
+</body>
+</html>
