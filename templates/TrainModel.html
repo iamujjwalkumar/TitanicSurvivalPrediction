@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Company Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  .jumbotron {
+    background-color: #04011e;
+    color: #fff;
+    padding: 20px 25px;
+  }
+  .container-fluid {
+    padding: 20px 100px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo {
+    font-size: 200px;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      background-color: #000000;
+      border-radius: 0px;
+      border-color: #04011e;
+      margin-top: -40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Titanic Tragedy</h1>
+  <p>The Journey Never Ended!</p>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div>
+    <div>
+      <ul class="nav navbar-nav" style="margin:0 20% 0 28%">
+        <li><a href="/"><strong>Home</strong></a></li>
+        <li><a href="/UploadFile"><strong>Upload Data</strong></a></li>
+        <li><a href="/ViewData"><strong>View Data</strong></a></li>
+        <li><a href="/SplitData"><strong>Split Data</strong></a></li>
+        <li class="active"><a href="/TrainModel"><strong>Train Model</strong></a></li>
+        <li><a href="/Prediction"><strong>Prediction</strong></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% if UPLOADED==True %}
+  {% if SPLITTED==True %}
+  <div align="center" >
+    <br/><br/>
+    <h3><b>Choose The Algorithm To Train The Model</b></h3><br/>
+    <form action="/TrainModelWithOption" class="navbar-form" method="post">
+    <div class="form-group col-md-4" style="margin:0 33% 0 33%" >
+      <select  class="form-control" name="algo">
+        <option value="LogisticRegression">LogisticRegression</option>
+        <option value="GaussianNB">GaussianNB</option>
+        <option value="SVM">SVM</option>
+        <option value="KNeighborsClassifier">KNeighborsClassifier</option>
+        <option value="DecisionTreeClassifier">DecisionTreeClassifier</option>
+        <option value="KMeans">KMeans</option>
+        <option value="RandomForestClassifier">RandomForestClassifier</option>
+      </select>
+      </div>
+    <br/><br/>
+          <button class="btn btn-default" name="Algorithm" type="submit">
+            <span class="glyphicon glyphicon-play"></span>
+          </button>
+    </form>
+  </div>
+  {% if TRAINEDMODEL==True %}
+    <div class="alert alert-success" style="margin:20px 40% 0 40%" align="center">
+      <strong>Model: </strong>{{model}}
+      <br/>
+      <strong>Accuracy: </strong>{{acc}}
+    </div>
+  {% endif %}
+
+  {% elif SPLITTED==False %}
+    <div class="alert alert-danger" style="margin:100px 40% 0 40%">
+      <strong>Split Dataset First!</strong>
+    </div>
+  {% endif %}
+{% elif UPLOADED==False %}
+    <div class="alert alert-danger" style="margin:100px 40% 0 40%">
+      <strong>Upload Dataset First!</strong>
+    </div>
+{% endif %}
+
+</body>
+</html>
